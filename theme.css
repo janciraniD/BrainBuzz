@@ -1,0 +1,22 @@
+:root {
+
+    /* Primary Colour */
+    --midnight-navy: #112250;
+
+    /* Secondary Colour */
+    --coconut-white: #F2F1EA;
+
+    /* Third Colour */
+    --champagne-gold: #D7C49A;
+
+    /* Additional Colours */
+    --dark-navy: #0B1738;
+    --soft-navy: #3B507D;
+    --pure-white: #FFFFFF;
+    --text-dark: #17264A;
+    --text-light: #777F91;
+    --border-color: #E2E1DA;
+    --success: #4D806D;
+    --danger: #A64D55;
+
+}

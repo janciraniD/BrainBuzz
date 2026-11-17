@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BRAINBUZZ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="theme.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <span>BB</span> BRAINBUZZ
+        </div>
+        <div class="nav-right">
+            <span id="userGreeting"></span>
+            <button id="profileBtn" class="hidden" onclick="showProfile()">Profile</button>
+            <button id="logoutBtn" class="hidden" onclick="logout()">Logout</button>
+        </div>
+    </nav>
+    <!-- HOME PAGE -->
+    <section id="homePage" class="page home-page">
+        <div class="home-content">
+            <p class="subtitle">WELCOME TO BRAINBUZZ</p>
+            <h1>
+                Challenge Your Mind.
+                <span>Discover More.</span>
+            </h1>
+            <p class="description">
+                Explore different subjects, test your knowledge
+                and improve your learning through fun quizzes.
+            </p>
+            <button class="primary-btn" onclick="showPage('loginPage')">
+                Login →
+            </button>
+            <button class="secondary-btn" onclick="showPage('registerPage')">
+                Register
+            </button>
+        </div>
+        <div class="home-image">
+            <div class="quiz-illustration">
+                <span class="illustration-star">ღ</span>
+                <p>YOUR NEXT CHALLENGE</p>
+                <h2>Think. Answer. Achieve.</h2>
+                <div class="illustration-option">A. Science</div>
+                <div class="illustration-option">B. History</div>
+                <div class="illustration-option">C. Technology</div>
+            </div>
+        </div>
+    </section>
+    <!-- REGISTER PAGE -->
+    <section id="registerPage" class="page auth-page hidden">
+        <div class="auth-container">
+            <button class="back-btn" onclick="showPage('homePage')">
+                ← Back
+            </button>
+            <h1>Create Account</h1>
+            <p>Start your learning journey with BrainBuzz.</p>
+            <form id="registerForm">
+                <input type="text" id="regName" placeholder="Full Name" required>
+                <input type="email" id="regEmail" placeholder="Email Address" required>
+                <input type="password" id="regPassword" placeholder="Password (minimum 6 characters)" minlength="6" required>
+                <input type="password" id="confirmPassword" placeholder="Confirm Password" minlength="6" required>
+                <p id="registerError" class="error"></p>
+                <button type="submit" class="primary-btn full-btn">
+                    Register →
+                </button>
+            </form>
+            <p class="switch-text">
+                Already have an account?
+                <button onclick="showPage('loginPage')">Login</button>
+            </p>
+        </div>
+    </section>
+    <!-- LOGIN PAGE -->
+    <section id="loginPage" class="page auth-page hidden">
+        <div class="auth-container">
+            <button class="back-btn" onclick="showPage('homePage')">
+                ← Back
+            </button>
+            <h1>Welcome Back!</h1>
+            <p>Login to continue your learning journey.</p>
+            <form id="loginForm">
+                <input type="email" id="loginEmail" placeholder="Email Address" required>
+                <input type="password" id="loginPassword" placeholder="Password" required>
+                <p id="loginError" class="error"></p>
+                <button type="submit" class="primary-btn full-btn">
+                    Login →
+                </button>
+            </form>
+            <p class="switch-text">
+                Don't have an account?
+                <button onclick="showPage('registerPage')">Register</button>
+            </p>
+        </div>
+    </section>
+    <!-- CATEGORY PAGE -->
+    <section id="categoryPage" class="page hidden">
+        <div class="section-heading">
+            <p class="subtitle">YOUR QUIZ SPACE</p>
+            <h1>Choose Your Category</h1>
+            <p>Select a subject to start your quiz.</p>
+        </div>
+        <div class="category-grid">
+            <div class="category-card" onclick="selectCategory('Sports')">
+                <span>⚽</span>
+                <h2>Sports</h2>
+                <p>Players, games and records</p>
+                <button>Explore →</button>
+            </div>
+            <div class="category-card" onclick="selectCategory('Science')">
+                <span>🔬</span>
+                <h2>Science</h2>
+                <p>Discover the world</p>
+                <button>Explore →</button>
+            </div>
+            <div class="category-card" onclick="selectCategory('History')">
+                <span>🏛️</span>
+                <h2>History</h2>
+                <p>Explore the past</p>
+                <button>Explore →</button>
+            </div>
+            <div class="category-card" onclick="selectCategory('Maths')">
+                <span>∑</span>
+                <h2>Maths</h2>
+                <p>Numbers and logic</p>
+                <button>Explore →</button>
+            </div>
+            <div class="category-card" onclick="selectCategory('World')">
+                <span>🌍</span>
+                <h2>World</h2>
+                <p>Places and cultures</p>
+                <button>Explore →</button>
+            </div>
+            <div class="category-card" onclick="selectCategory('Technology')">
+                <span>💻</span>
+                <h2>Technology</h2>
+                <p>Digital innovation</p>
+                <button>Explore →</button>
+            </div>
+        </div>
+    </section>
+    <!-- DIFFICULTY PAGE -->
+    <section id="difficultyPage" class="page hidden">
+        <button class="back-btn" onclick="showPage('categoryPage')">
+            ← Back to Categories
+        </button>
+        <div class="section-heading">
+            <p class="subtitle">NEXT STEP</p>
+            <h1 id="selectedCategoryTitle">Choose Difficulty</h1>
+            <p>Select your preferred difficulty level.</p>
+        </div>
+        <div class="difficulty-grid">
+            <button onclick="startQuiz('Easy')">
+                <span>☀</span>
+                <h2>Easy</h2>
+                <p>Beginner level</p>
+            </button>
+            <button onclick="startQuiz('Medium')">
+                <span>◈</span>
+                <h2>Medium</h2>
+                <p>Intermediate level</p>
+            </button>
+            <button onclick="startQuiz('Hard')">
+                <span>✦</span>
+                <h2>Hard</h2>
+                <p>Advanced level</p>
+            </button>
+        </div>
+    </section>
+    <!-- QUIZ PAGE -->
+    <section id="quizPage" class="page hidden">
+        <div class="quiz-container">
+            <div class="quiz-header">
+                <button class="back-btn" onclick="exitQuiz()">
+                    ← Exit
+                </button>
+                <span id="quizCategory"></span>
+            </div>
+            <div class="progress-info">
+                <span id="questionNumber">Question 1 of 5</span>
+                <span id="progressPercent">20%</span>
+            </div>
+            <div class="progress-bar">
+                <div id="progress"></div>
+            </div>
+            <h1 id="questionText">Question</h1>
+            <div id="optionsContainer" class="options-container"></div>
+            <button id="nextBtn" class="primary-btn full-btn" disabled>
+                Next Question →
+            </button>
+        </div>
+    </section>
+    <!-- RESULT PAGE -->
+    <section id="resultPage" class="page hidden">
+        <div class="result-container">
+            <p class="subtitle">QUIZ COMPLETED</p>
+            <div class="result-circle">
+                <div class="trophy-icon">🏆</div>
+                <span>YOUR SCORE</span>
+                <h1 id="scoreText">0/5</h1>
+            </div>
+            <h1 id="resultMessage">Great Job!</h1>
+            <p id="resultDescription"></p>
+            <div class="result-stats">
+                <div>
+                    <h2 id="correctCount">0</h2>
+                    <p>Correct</p>
+                </div>
+                <div>
+                    <h2 id="wrongCount">0</h2>
+                    <p>Incorrect</p>
+                </div>
+            </div>
+            <button class="primary-btn" onclick="startQuiz(currentLevel)">
+                Try Again ↻
+            </button>
+            <button class="secondary-btn" onclick="showPage('categoryPage')">
+                Choose Category
+            </button>
+        </div>
+    </section>
+    <!-- PROFILE PAGE -->
+    <section id="profilePage" class="page hidden">
+        <button class="back-btn" onclick="showPage('categoryPage')">
+            ← Back
+        </button>
+        <div class="section-heading">
+            <p class="subtitle">YOUR ACCOUNT</p>
+            <h1>User Profile</h1>
+        </div>
+        <div class="profile-container">
+            <div class="profile-avatar" id="profileAvatar">BB</div>
+            <h2 id="profileName"></h2>
+            <p id="profileEmail"></p>
+            <form id="editProfileForm">
+                <h3>Edit Profile</h3>
+                <input type="text" id="editName" placeholder="Name" required>
+                <input type="email" id="editEmail" placeholder="Email" required>
+                <button type="submit" class="primary-btn full-btn">
+                    Save Changes
+                </button>
+            </form>
+            <form id="changePasswordForm">
+                <h3>Change Password</h3>
+                <input type="password" id="oldPassword" placeholder="Current Password" required>
+                <input type="password" id="newPassword" placeholder="New Password (minimum 6 characters)" minlength="6" required>
+                <button type="submit" class="secondary-btn full-btn">
+                    Update Password
+                </button>
+            </form>
+            <button class="delete-btn" onclick="deleteAccount()">
+                Delete Account
+            </button>
+        </div>
+    </section>
+    <footer>
+        © 2026 BRAINBUZZ. Learn. Play. Grow.
+    </footer>
+    <script src="quiz.js"></script>
+</body>
+</html>
