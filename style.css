@@ -645,8 +645,11 @@ footer {
         font-size: 20px;
     }
     .nav-right {
+        display:flex;
+        align-items:center;
         gap: 8px;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
+        white-space: nowrap;
     }
     .nav-right button {
         padding: 8px 10px;
